@@ -5,10 +5,14 @@ import Buttons from './component/Buttons';
 
 function App() {
   return (
-    <div>
-      <Score />
-      <Main />
-      <Buttons />
+    <div className='wrapper'>
+      <div className="main-box">
+        <Score />
+        <div className="main-box-list">
+          <Main />
+        </div>
+        <Buttons />
+      </div>
     </div>
   );
 }
