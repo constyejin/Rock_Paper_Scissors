@@ -32,9 +32,14 @@ const choice = {
 
 function App() {
   const [userSelect, setUserSelect] = useState(null);
+  const [comSelect, setComSelect] = useState(null);
 
   const play = (userSelect) => {
-    setUserSelect(choice[userSelect])
+    setUserSelect(choice[userSelect]);
+
+    let choiceArr = Object.keys(choice);
+    let ramdom = Math.floor(Math.random() * 3)
+    console.log(ramdom)
   }
 
   return (
