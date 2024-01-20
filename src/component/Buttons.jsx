@@ -1,16 +1,16 @@
 import React from 'react'
 
-const Buttons = () => {
+const Buttons = (props) => {
   return (
     <div className='btn-list'>
-      <button>가위
-        <img src="" alt="" />
+      <button onClick={() => {props.play("rock")}}>
+        <img src={props.choice["rock"].img} alt={props.choice["rock"].name} />
       </button>
-      <button>보
-        <img src="" alt="" />
+      <button onClick={() => {props.play("scissors")}}>
+        <img src={props.choice["scissors"].img} alt={props.choice["rock"].name} />
       </button>
-      <button>바위
-        <img src="" alt="" />
+      <button onClick={() => {props.play("paper")}}>
+        <img src={props.choice["paper"].img} alt={props.choice["rock"].name} />
       </button>
     </div>
   )
