@@ -31,10 +31,10 @@ const choice = {
 
 function App() {
   const [userSelect, setUserSelect] = useState(null);
-
   const play = (userSelect) => {
-
+    setUserSelect(choice[userSelect])
   }
+
   return (
     <div className='wrapper'>
       <div className="main-box">
@@ -42,7 +42,7 @@ function App() {
         <div className="main-box-list">
           <Main />
         </div>
-        <Buttons play={play} />
+        <Buttons play={play} choice={choice }/>
       </div>
     </div>
   );
