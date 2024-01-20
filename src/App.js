@@ -14,6 +14,7 @@ import Buttons from './component/Buttons';
 // 2. Computer 값은 세 값 중 하나가 랜덤으로 선택되게 한다.
 // 3. 1,2번 값을 비교해서 승부를 가린다 (win, lose, tie)
 // 4. 결과에 따라 win, lose, tie 글씨 컬러를 변경한다. (class 적용)
+
 const choice = {
   rock : {
     name : "Rock",
@@ -31,6 +32,7 @@ const choice = {
 
 function App() {
   const [userSelect, setUserSelect] = useState(null);
+
   const play = (userSelect) => {
     setUserSelect(choice[userSelect])
   }
@@ -40,7 +42,8 @@ function App() {
       <div className="main-box">
         <Score />
         <div className="main-box-list">
-          <Main />
+          <Main title="User" item={userSelect}/>
+          <Main title="Computer" item={userSelect}/>
         </div>
         <Buttons play={play} choice={choice }/>
       </div>
