@@ -37,9 +37,15 @@ function App() {
   const play = (userSelect) => {
     setUserSelect(choice[userSelect]);
 
+    let computerChoice = randomChoice();
+    setComSelect(computerChoice);
+  }
+
+  const randomChoice = () => {
     let choiceArr = Object.keys(choice);
-    let ramdom = Math.floor(Math.random() * 3)
-    console.log(ramdom)
+    let random = Math.floor(Math.random() * choiceArr.length);
+    let final = choiceArr[random];
+    return choice[final]
   }
 
   return (
@@ -48,7 +54,7 @@ function App() {
         <Score />
         <div className="main-box-list">
           <Main title="User" item={userSelect}/>
-          <Main title="Computer" item={userSelect}/>
+          <Main title="Computer" item={comSelect}/>
         </div>
         <Buttons play={play} choice={choice }/>
       </div>
