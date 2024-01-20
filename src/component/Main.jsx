@@ -1,11 +1,13 @@
 import React from 'react'
 
-const Main = () => {
+const Main = (props) => {
   return (
     <div className='main-box-item'>
-      <h2>User</h2>
-      <img src="" alt="" />
-      <p></p>
+      <h2>{props.title}</h2>
+      {
+        props.item ? <img src={props.item.img} alt={props.item.name} /> : null
+      }
+      <p>Resut</p>
     </div>
   )
 }
