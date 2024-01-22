@@ -35,10 +35,13 @@ function App() {
   const [comSelect, setComSelect] = useState(null);
 
   const play = (userSelect) => {
-    setUserSelect(choice[userSelect]);
+    let userChoice = choice[userSelect]
+    setUserSelect(userChoice);
 
     let computerChoice = randomChoice();
     setComSelect(computerChoice);
+
+    judgement(userChoice, computerChoice)
   }
 
   const randomChoice = () => {
@@ -48,9 +51,16 @@ function App() {
     return choice[final]
   }
 
-  const judgement = () => {
-    
+  const judgement = (user, computer) => {
+    // user.name == "rock" / computer.name == "scissors" => user WIN
+    // user.name == "rock" / computer.name == "paper" => computerer WIN
+    // user.name == "scissors" / computer.name == "paper" => user WIN
+    // user.name == "scissors" / computer.name == "rock" => computerer WIN
+    // user.name == "paper" / computer.name == "rock" => user WIN
+    // user.name == "paper" / computer.name == "scissors" => computerer WIN
+    // user.name == computer.name => TIE
   }
+
   return (
     <div className='wrapper'>
       <div className="main-box">
