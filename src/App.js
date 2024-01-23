@@ -33,6 +33,7 @@ const choice = {
 function App() {
   const [userSelect, setUserSelect] = useState(null);
   const [comSelect, setComSelect] = useState(null);
+  const [result, setResult] = useState("");
 
   const play = (userSelect) => {
     let userChoice = choice[userSelect]
@@ -41,7 +42,8 @@ function App() {
     let computerChoice = randomChoice();
     setComSelect(computerChoice);
 
-    judgement(userChoice, computerChoice)
+    let userResult = judgement(userChoice, computerChoice)
+    setResult(userResult);
   }
 
   const randomChoice = () => {
@@ -52,13 +54,22 @@ function App() {
   }
 
   const judgement = (user, computer) => {
-    // user.name == "rock" / computer.name == "scissors" => user WIN
-    // user.name == "rock" / computer.name == "paper" => computerer WIN
-    // user.name == "scissors" / computer.name == "paper" => user WIN
-    // user.name == "scissors" / computer.name == "rock" => computerer WIN
-    // user.name == "paper" / computer.name == "rock" => user WIN
-    // user.name == "paper" / computer.name == "scissors" => computerer WIN
+    // user.name == "Rock" / computer.name == "Scissors" => user WIN
+    // user.name == "Rock" / computer.name == "Paper" => computerer WIN
+    // user.name == "Scissors" / computer.name == "Paper" => user WIN
+    // user.name == "Scissors" / computer.name == "Rock" => computerer WIN
+    // user.name == "Paper" / computer.name == "Rock" => user WIN
+    // user.name == "Paper" / computer.name == "Scissors" => computerer WIN
     // user.name == computer.name => TIE
+
+    if(user.name == computer.name) {
+      return "tie"
+    } else if(user.name == "Rock") return computer.name == "Scissors" ? "win" : "lose"
+    else if(user.name == "Rock") return computer.name == "Paper" ? "lose" : "win"
+    else if(user.name == "Scissors") return computer.name == "Paper" ? "win" : "lose"
+    else if(user.name == "Scissors") return computer.name == "Rock" ? "lose" : "win"
+    else if(user.name == "Paper") return computer.name == "Rock" ? "win" : "lose"
+    else if(user.name == "Paper") return computer.name == "Scissors" ? "lose" : "win"
   }
 
   return (
@@ -66,8 +77,8 @@ function App() {
       <div className="main-box">
         <Score />
         <div className="main-box-list">
-          <Main title="User" item={userSelect}/>
-          <Main title="Computer" item={comSelect}/>
+          <Main title="User" item={userSelect} result={result}/>
+          <Main title="Computer" item={comSelect} result={result}/>
         </div>
         <Buttons play={play} choice={choice }/>
       </div>
