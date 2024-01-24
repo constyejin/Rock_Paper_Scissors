@@ -1,14 +1,13 @@
 import React from 'react'
 
 const Main = (props) => {
-  // console.log(props)
   return (
     <div className='main-box-item'>
       <h2>{props.title}</h2>
       {
         props.item ? <img src={props.item.img} alt={props.item.name} /> : null
       }
-      <p>Resut</p>
+      <p>{props.result}</p>
     </div>
   )
 }
