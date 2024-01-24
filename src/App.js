@@ -95,11 +95,14 @@ function App() {
     return result == "win" ? "lose" : result == "tie" ? "tie" : "win";
   }
 
-  comJudgement()
+  useEffect(() => {
+    localStorage.setItem("score", JSON.stringify(score));
+  }, [score])
+
   return (
     <div className='wrapper'>
       <div className="main-box">
-        <Score score={score}/>
+        <Score score={score} setScore={setScore}/>
         <div className="main-box-list">
           <Main title="User" item={userSelect} result={result}/>
           <Main title="Computer" item={comSelect} result={comResult}/>
