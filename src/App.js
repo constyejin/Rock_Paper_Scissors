@@ -34,6 +34,7 @@ function App() {
   const [userSelect, setUserSelect] = useState(null);
   const [comSelect, setComSelect] = useState(null);
   const [result, setResult] = useState("");
+  const [comResult, setComResult] = useState("");
 
   const play = (userSelect) => {
     let userChoice = choice[userSelect]
@@ -42,8 +43,10 @@ function App() {
     let computerChoice = randomChoice();
     setComSelect(computerChoice);
 
-    let userResult = judgement(userChoice, computerChoice)
+    let userResult = judgement(userChoice, computerChoice);
     setResult(userResult);
+
+    setComResult(comJudgement(userResult))
   }
 
   const randomChoice = () => {
@@ -72,13 +75,18 @@ function App() {
     else if(user.name == "Paper") return computer.name == "Scissors" ? "lose" : "win"
   }
 
+  const comJudgement = (result) => {
+    return result == "win" ? "lose" : result == "tie" ? "tie" : "win";
+  }
+
+  comJudgement()
   return (
     <div className='wrapper'>
       <div className="main-box">
         <Score />
         <div className="main-box-list">
           <Main title="User" item={userSelect} result={result}/>
-          <Main title="Computer" item={comSelect} result={result}/>
+          <Main title="Computer" item={comSelect} result={comResult}/>
         </div>
         <Buttons play={play} choice={choice }/>
       </div>
