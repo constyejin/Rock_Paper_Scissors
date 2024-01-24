@@ -1,13 +1,14 @@
 import React from 'react'
 
-const Score = () => {
+const Score = (props) => {
+  console.log(props)
   return (
     <div className='score-box'>
       <div className="score">
         <h3>Score</h3>
-        <h3>0</h3>
+        <h3>{props.score.userScore}</h3>
         <h3>:</h3>
-        <h3>0</h3>
+        <h3>{props.score.comScore}</h3>
       </div>
       <button>Reset</button>
     </div>
