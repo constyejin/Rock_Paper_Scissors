@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import Main from './component/Main';
 import Score from './component/Score';
@@ -35,6 +35,10 @@ function App() {
   const [comSelect, setComSelect] = useState(null);
   const [result, setResult] = useState("");
   const [comResult, setComResult] = useState("");
+  const [score, setScore] = useState(() => {
+    return !JSON.parse(localStorage.getItem("score")) ? { userScore : 0, comScore : 0 } : JSON.parse(localStorage.getItem("score"))
+  });
+
 
   const play = (userSelect) => {
     let userChoice = choice[userSelect]
@@ -46,7 +50,19 @@ function App() {
     let userResult = judgement(userChoice, computerChoice);
     setResult(userResult);
 
-    setComResult(comJudgement(userResult))
+    setComResult(comJudgement(userResult));
+
+    if(userResult == "win") {
+      setScore({
+        ...score,
+        userScore : score.userScore + 1
+      })
+    } else {
+      setScore({
+        ...score,
+        comScore : score.comScore + 1
+      })
+    }
   }
 
   const randomChoice = () => {
@@ -83,7 +99,7 @@ function App() {
   return (
     <div className='wrapper'>
       <div className="main-box">
-        <Score />
+        <Score score={score}/>
         <div className="main-box-list">
           <Main title="User" item={userSelect} result={result}/>
           <Main title="Computer" item={comSelect} result={comResult}/>
