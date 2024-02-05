@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import './assets/scss/main.scss';
+import './App.css';
 import Main from './component/Main';
 import Score from './component/Score';
 import Buttons from './component/Buttons';
