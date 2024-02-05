@@ -7,7 +7,7 @@ const Main = (props) => {
       {
         props.item ? <img src={props.item.img} alt={props.item.name} /> : null
       }
-      <p>{props.result}</p>
+      <p className={props.result}>{props.result}</p>
     </div>
   )
 }
